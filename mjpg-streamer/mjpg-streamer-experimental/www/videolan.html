@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Robot con WebCam - Raspberry Pi</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <!--[if IE 6]>
+    <link rel="stylesheet" href="fix.css" type="text/css" />
+    <![endif]-->
+  </head>
+
+  <script type="text/javascript">
+    var href = window.location.href;
+    var root = href.substr(0, href.lastIndexOf('/'));
+
+    function playlist(link, hint) {
+      var res = true;
+
+      if (hint)
+        res = confirm("Please open the following playlist directly with the VideoLAN Player");
+
+      if ( !res ) {
+        link.href = "#";
+        return false;
+      }
+
+      var m3u = "data:playlist/mjpgstreamer,#EXTM3U%0A%0A#EXTINF:-1,Webcam%20MJPG-Stream%0A" + root + "/?action=stream";
+      link.href = m3u;
+      return true;
+    }
+    
+    function run() {
+      document.getElementById("stream").firstChild.nodeValue = root + "/?action=stream";
+    }
+  </script>
+
+  <body onload="run();">
+    <div id="sidebar">
+      <h1>Robot con WebCam - Raspberry Pi</h1>
+      <h2>Transmisión en tiempo real</h2>
+
+      <div id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="static.html">Estática</a>
+        <a href="stream.html">Stream</a>
+        <a href="java.html">Java</a>
+        <a href="javascript.html">Javascript</a>
+        <a class="active" href="videolan.html">VideoLAN</a>
+        <a target="_blank" onClick="window.open(this.href, '_blank'); return false;" href="control.htm">Control</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>VideoLAN</h1>
+      <h2>Mostrar la transmisión en VideoLAN Player</h2>
+
+      <h3>Lista de reproducción M3U generada por Javascript</h3>
+      <p>Haga clic en este enlace y se creará una <a onclick="return playlist(this, true);" href="#">lista de reproducción M3U </a> en Javascript.</p>
+      
+      <h3>Ingrese la transmisión manualmente</h3>
+      <p>Puede abrir VLC e ingresar al flujo de red:<br /><pre id="stream">http://&lt;IP&gt;:&lt;port&gt;/?action=stream</pre></p>
+
+    </div>
+  </body>
+</html>

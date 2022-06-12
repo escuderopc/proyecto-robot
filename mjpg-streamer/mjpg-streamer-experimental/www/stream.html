@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Robot con WebCam - Raspberry Pi</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="text/javascript" src="jquery.js"></script>    
+    <script type="text/javascript" src="jquery.rotate.js"></script>
+    <!--[if IE 6]>
+    <link rel="stylesheet" href="fix.css" type="text/css" />
+    <![endif]-->
+    <script type="text/javascript">
+    
+    var phi = 0, flipped = 0, mirrored = 0;
+
+	function setXformClass () {
+		$('.xform').each(function(idx,el) {
+			el.className = "xform x" +(flipped ? "-flipped":"") + (mirrored ? "-mirrored" : "") + "-rotated-" + phi;
+		});
+	}
+    $(document).ready(function() {
+		// set rotation angle phi and toggle rotate class
+		$('#rotate').click(function() {
+			phi = (phi + 90) % 360;
+			setXformClass();
+			if (phi % 180) {
+				$('.xform-p').addClass('rotated');
+			} else {
+				$('.xform-p').removeClass('rotated');
+			}
+		});
+		// toggle mirror class component
+		$('#mirror').click(function() {
+			mirrored = ! mirrored;
+			setXformClass();
+		});
+		// toggle flip class component
+		$('#flip').click(function() {
+			flipped = ! flipped;
+			setXformClass();
+		});
+	});
+	</script>
+  </head>
+
+  <body>
+    <div id="sidebar">
+      <h1>Robot con WebCam - Raspberry Pi</h1>
+      <h2>Transmisión en tiempo real</h2>
+
+      <div id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="static.html">Estática</a>
+        <a class="active" href="stream.html">Stream</a>
+        <a href="java.html">Java</a>
+        <a href="javascript.html">Javascript</a>
+        <a href="videolan.html">VideoLAN</a>
+        <a target="_blank" onClick="window.open(this.href, '_blank'); return false;" href="control.htm">Control</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>Stream</h1>
+      <h2>Visualización de video en vivo</h2>
+
+      <h3>Sugerencias</h3>
+      <p>Este ejemplo muestra una secuencia. Funciona con algunos navegadores como Firefox, por ejemplo. Para ver un ejemplo sencillo haga clic <a href="stream_simple.html">aquí </a>. Es posible que deba volver a cargar esta página presionando F5 una o más veces.</p>
+
+      <h3>Código fuente</h3>
+      <p><pre>&lt;img src="./?action=stream" /&gt;</pre></p>
+
+	<p id="xform">
+		<button id="rotate"><div class="btnface"></div></button>
+		<button id="mirror"><div class="btnface"></div></button>
+		<button id="flip"><div class="btnface"></div></button>
+	</p>
+	<p class="xform-p"></p>
+	<p id="streamwrap" class="xform-p">
+		<img id="streamimage" class="xform" src="./?action=stream" />
+	</p>
+  </body>
+</html>

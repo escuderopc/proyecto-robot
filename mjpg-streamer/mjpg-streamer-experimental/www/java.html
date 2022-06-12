@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Robot con WebCam - Raspberry Pi</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <!--[if IE 6]>
+    <link rel="stylesheet" href="fix.css" type="text/css" />
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="sidebar">
+      <h1>Robot con WebCam - Raspberry Pi</h1>
+      <h2>Transmisión en tiempo real</h2>
+
+      <div id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="static.html">Estática</a>
+        <a href="stream.html">Stream</a>
+        <a class="active" href="java.html">Java</a>
+        <a href="javascript.html">Javascript</a>
+        <a href="videolan.html">VideoLAN</a>
+        <a target="_blank" onClick="window.open(this.href, '_blank'); return false;" href="control.htm">Control</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <h1>Java</h1>
+      <h2>Visualización de video en vivo con java</h2>
+
+      <h3>Sugerencias</h3>
+      <p>Este ejemplo muestra la secuencia mediante el uso de un applet de Java. Funciona con cualquier navegador con soporte java. Para ver un ejemplo sencillo haga clic aquí. Otro ejemplo muestra cómo colocar controles alrededor del applet de Java.</p>
+
+      <h3>Código fuente</h3>
+      <p><pre>&lt;applet code="com.charliemouse.cambozola.Viewer" archive="cambozola.jar" width="512" height="384"&gt;
+&lt;param name="url" value="./?action=stream"/&gt;
+&lt;/applet&gt;</pre></p>
+
+      <applet code="com.charliemouse.cambozola.Viewer" archive="cambozola.jar" width="512" height="384">
+        <param name="url" value="./?action=stream"/>
+        <param name="watermarks" value="favicon.png|left,top"/>
+      </applet>
+
+      <h3>Acerca del subprograma Java</h3>
+      <p>El applet de java usado se llama <a href="http://www.charliemouse.com/code/cambozola/"><i>cambozola.</i></a>.
+        Aquí está la licencia:<br />
+      <iframe src="LICENSE.txt" name="LICENSE" width="512" height="200" scrolling="yes">
+        <p><a href="LICENSE.txt">license</a></p>
+      </iframe>
+      </p>
+
+    </div>
+  </body>
+</html>
+
